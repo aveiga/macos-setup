@@ -5,3 +5,6 @@ Ansible Playbooks to automatically setup macOS
 - Ansible
 - community.general.homebrew Ansible collection
 - Homebrew
+
+## How to
+`make install`

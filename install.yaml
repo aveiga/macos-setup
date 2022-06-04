@@ -1,0 +1,12 @@
+---
+- name: Install all tools
+  hosts: localhost
+  tasks:
+    - name: Install tmux
+      community.general.homebrew:
+        name: tmux
+        state: present
+    - name: Install fzf
+      community.general.homebrew:
+        name: fzf
+        state: present

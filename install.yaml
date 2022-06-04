@@ -2,11 +2,25 @@
 - name: Install all tools
   hosts: localhost
   tasks:
-    - name: Install tmux
+    - name: Install tools
       community.general.homebrew:
-        name: tmux
+        name: "{{ item }}"
         state: present
-    - name: Install fzf
-      community.general.homebrew:
-        name: fzf
-        state: present
+      with_items:
+        - tmux
+        - fzf
+        - go
+        - k9s
+        - terraform
+        - packer
+        - node
+        - maven
+        - btop
+        - jq
+        - btop
+        - jq
+    - name: Remind about other tools
+      debug:
+        msg: "Don't forget about... {{ item }}"
+      with_items:
+        - "sdkman: (https://sdkman.io/install)"

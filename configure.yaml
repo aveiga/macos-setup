@@ -1,0 +1,5 @@
+---
+- name: Configure the multiple tools
+  hosts: localhost
+  roles:
+    - configure

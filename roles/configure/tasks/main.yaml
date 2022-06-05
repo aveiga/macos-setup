@@ -1,0 +1,20 @@
+---
+- name: Ensure .config directory exists
+  ansible.builtin.file:
+    path: "/Users/aveiga/.config"
+    state: directory
+      
+- name: Ensure .config/nvim directory exists
+  ansible.builtin.file:
+    path: "/Users/aveiga/.config/nvim"
+    state: directory
+      
+- name: Setup vimrc
+  ansible.builtin.copy:
+    src: "../files/.vimrc"
+    dest: "/Users/aveiga/.vimrc"
+
+- name: Setup nvimrc
+  ansible.builtin.copy:
+    src: "../files/.vimrc"
+    dest: "/Users/aveiga/.config/nvim/init.vim"

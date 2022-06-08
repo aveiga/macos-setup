@@ -19,6 +19,11 @@
     src: "../files/.vimrc"
     dest: "/Users/aveiga/.config/nvim/init.vim"
 
+- name: Setup tmux.conf
+  ansible.builtin.copy:
+    src: "../files/.tmux.conf"
+    dest: "/Users/aveiga/.tmux.conf"
+
 - name: Create tmux-256color.info
   ansible.builtin.shell: "/opt/homebrew/opt/ncurses/bin/infocmp tmux-256color > /Users/aveiga/tmux-256color.info"
 

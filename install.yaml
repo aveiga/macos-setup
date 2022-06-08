@@ -19,6 +19,7 @@
         - jq
         - btop
         - jq
+        - ncurses
     - name: Remind about other tools
       debug:
         msg: "Don't forget about... {{ item }}"

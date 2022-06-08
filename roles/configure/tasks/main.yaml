@@ -18,3 +18,9 @@
   ansible.builtin.copy:
     src: "../files/.vimrc"
     dest: "/Users/aveiga/.config/nvim/init.vim"
+
+- name: Create tmux-256color.info
+  ansible.builtin.shell: "/opt/homebrew/opt/ncurses/bin/infocmp tmux-256color > /Users/aveiga/tmux-256color.info"
+
+- name: Create a complied entry in ~/.terminfo based on the tmux-256color.info
+  ansible.builtin.shell: "tic -xe tmux-256color /Users/aveiga/tmux-256color.info"

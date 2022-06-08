@@ -1,31 +1,31 @@
 ---
 - name: Ensure .config directory exists
   ansible.builtin.file:
-    path: "/Users/aveiga/.config"
+    path: "~/.config"
     state: directory
       
 - name: Ensure .config/nvim directory exists
   ansible.builtin.file:
-    path: "/Users/aveiga/.config/nvim"
+    path: "~/.config/nvim"
     state: directory
       
 - name: Setup vimrc
   ansible.builtin.copy:
     src: "../files/.vimrc"
-    dest: "/Users/aveiga/.vimrc"
+    dest: "~/.vimrc"
 
 - name: Setup nvimrc
   ansible.builtin.copy:
     src: "../files/.vimrc"
-    dest: "/Users/aveiga/.config/nvim/init.vim"
+    dest: "~/.config/nvim/init.vim"
 
 - name: Setup tmux.conf
   ansible.builtin.copy:
     src: "../files/.tmux.conf"
-    dest: "/Users/aveiga/.tmux.conf"
+    dest: "~/.tmux.conf"
 
 - name: Create tmux-256color.info
-  ansible.builtin.shell: "/opt/homebrew/opt/ncurses/bin/infocmp tmux-256color > /Users/aveiga/tmux-256color.info"
+  ansible.builtin.shell: "/opt/homebrew/opt/ncurses/bin/infocmp tmux-256color > ~/tmux-256color.info"
 
 - name: Create a complied entry in ~/.terminfo based on the tmux-256color.info
-  ansible.builtin.shell: "tic -xe tmux-256color /Users/aveiga/tmux-256color.info"
+  ansible.builtin.shell: "tic -xe tmux-256color ~/tmux-256color.info"

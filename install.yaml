@@ -25,3 +25,4 @@
         msg: "Don't forget about... {{ item }}"
       with_items:
         - "sdkman: (https://sdkman.io/install)"
+        - "cheatsheet: (https://www.mediaatelier.com/CheatSheet/)"

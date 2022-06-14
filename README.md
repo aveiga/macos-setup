@@ -3,6 +3,7 @@ Ansible Playbooks to automatically setup macOS
 
 ## Pre-requisites:
 - Ansible
+- community.general Ansible collection
 - community.general.homebrew Ansible collection
 - Homebrew
 

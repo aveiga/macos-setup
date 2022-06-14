@@ -1,5 +1,5 @@
 ---
-- name: Install tools
+- name: Install Homebrew tools
   community.general.homebrew:
     name: "{{ item }}"
     state: present
@@ -8,6 +8,7 @@
     - fzf
     - go
     - k9s
+    - kubebuilder
     - terraform
     - packer
     - node
@@ -19,6 +20,13 @@
     - ncurses
     - mas
 
+      # - name: Install Homebrew Cask tools
+      #   community.general.homebrew_cask:
+      #     name: "{{ item }}"
+      #     state: present
+      #   with_items:
+      #     - alacritty
+    
 - name: Remind about App Store login
   debug:
     msg: "Now is the time to login in the App Store"

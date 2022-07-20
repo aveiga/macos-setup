@@ -1,4 +1,12 @@
 ---
+- name: Tap external Homebrew repository, state present
+  community.general.homebrew_tap:
+    name: "{{ item }}"
+  with_items:
+    - civo/tools
+    - derailed/k9s
+    - hashicorp/tap
+
 - name: Install Homebrew tools
   community.general.homebrew:
     name: "{{ item }}"
@@ -20,6 +28,7 @@
     - ncurses
     - mas
     - k6
+    - civo
 
       # - name: Install Homebrew Cask tools
       #   community.general.homebrew_cask:

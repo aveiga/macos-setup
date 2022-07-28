@@ -19,7 +19,6 @@
     - kubebuilder
     - terraform
     - packer
-    - node
     - maven
     - btop
     - jq
@@ -29,6 +28,7 @@
     - mas
     - k6
     - civo
+    - yarn
 
       # - name: Install Homebrew Cask tools
       #   community.general.homebrew_cask:
@@ -36,6 +36,17 @@
       #     state: present
       #   with_items:
       #     - alacritty
+
+- name: Run script-based installations
+  ansible.builtin.shell: "{{ item }}"
+  with_items:
+    - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash"
+
+- name: Remind about extra config for script-based installation
+  debug:
+    msg: "{{ item }}"
+  with_items:
+    - "For NodeJS, run npx install <version>"
 
 - name: Remind about App Store login
   debug:

@@ -29,6 +29,7 @@
     - k6
     - civo
     - yarn
+    - aquasecurity/trivy/trivy
 
       # - name: Install Homebrew Cask tools
       #   community.general.homebrew_cask:

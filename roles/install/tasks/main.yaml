@@ -30,6 +30,7 @@
     - civo
     - yarn
     - aquasecurity/trivy/trivy
+    - cloudfoundry/tap/cf-cli@8
 
       # - name: Install Homebrew Cask tools
       #   community.general.homebrew_cask:

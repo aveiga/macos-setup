@@ -13,6 +13,8 @@
     state: latest
   with_items:
     - warp
+    - amethyst
+    - vagrant
 
 - name: Install Homebrew tools
   community.general.homebrew:

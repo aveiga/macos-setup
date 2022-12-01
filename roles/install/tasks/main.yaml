@@ -6,6 +6,7 @@
     - civo/tools
     - derailed/k9s
     - hashicorp/tap
+    - vmware-tanzu/carvel
 
 - name: Install Homebrew casks
   community.general.homebrew_cask:
@@ -24,6 +25,7 @@
     - tmux
     - fzf
     - go
+    - golangci-lint
     - k9s
     - kubebuilder
     - terraform
@@ -40,6 +42,8 @@
     - yarn
     - aquasecurity/trivy/trivy
     - cloudfoundry/tap/cf-cli@8
+    - bash
+    - kbld
 
       # - name: Install Homebrew Cask tools
       #   community.general.homebrew_cask:
@@ -52,6 +56,8 @@
   ansible.builtin.shell: "{{ item }}"
   with_items:
     - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash"
+    - "go install github.com/go-delve/delve/cmd/dlv@latest"
+    - "go install sigs.k8s.io/kind@v0.17.0"
 
 - name: Remind about extra config for script-based installation
   debug:

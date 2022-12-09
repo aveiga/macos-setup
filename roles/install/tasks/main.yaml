@@ -7,6 +7,8 @@
     - derailed/k9s
     - hashicorp/tap
     - vmware-tanzu/carvel
+    - anchore/grype
+    - anchore/syft
 
 - name: Install Homebrew casks
   community.general.homebrew_cask:
@@ -22,6 +24,8 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - syft
+    - grype
     - tmux
     - fzf
     - go
@@ -44,13 +48,6 @@
     - cloudfoundry/tap/cf-cli@8
     - bash
     - kbld
-
-      # - name: Install Homebrew Cask tools
-      #   community.general.homebrew_cask:
-      #     name: "{{ item }}"
-      #     state: present
-      #   with_items:
-      #     - alacritty
 
 - name: Run script-based installations
   ansible.builtin.shell: "{{ item }}"

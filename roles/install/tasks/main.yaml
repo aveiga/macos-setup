@@ -15,6 +15,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - pgadmin4
     - warp
     - amethyst
     - vagrant
@@ -30,6 +31,7 @@
     - fzf
     - go
     - golangci-lint
+    - rust
     - k9s
     - kubebuilder
     - terraform

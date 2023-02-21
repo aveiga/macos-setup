@@ -20,6 +20,7 @@
     - amethyst
     - vagrant
     - sublime-text
+    - studio-3t
 
 - name: Post Homebrew Cask install
   ansible.builtin.shell: "{{ item }}"

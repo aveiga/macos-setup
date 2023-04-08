@@ -32,6 +32,9 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - slides
+    - gum
+    - vhs
     - neovim
     - syft
     - grype

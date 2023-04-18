@@ -3,21 +3,17 @@
   ansible.builtin.file:
     path: "~/.config"
     state: directory
-      
+
 - name: Ensure .config/nvim directory exists
   ansible.builtin.file:
     path: "~/.config/nvim"
     state: directory
-      
-- name: Setup vimrc
-  ansible.builtin.copy:
-    src: "../files/.vimrc"
-    dest: "~/.vimrc"
 
-- name: Setup nvimrc
-  ansible.builtin.copy:
-    src: "../files/.vimrc"
-    dest: "~/.config/nvim/init.vim"
+- name: Git clone Astrovim
+  ansible.builtin.git:
+    repo: "https://github.com/AstroNvim/AstroNvim"
+    dest: "~/.config/nvim"
+    depth: 1
 
 - name: Setup tmux.conf
   ansible.builtin.copy:

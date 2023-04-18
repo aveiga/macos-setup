@@ -15,12 +15,20 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - pgadmin4
     - warp
     - amethyst
     - vagrant
     - sublime-text
     - studio-3t
+
+- name: Install Big Homebrew casks
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - pgadmin4
+  when:
+    - install_big_components == "yes"
 
 - name: Post Homebrew Cask install
   ansible.builtin.shell: "{{ item }}"
@@ -32,6 +40,8 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - jesseduffield/lazygit/lazygit
+    - ripgrep
     - slides
     - gum
     - vhs

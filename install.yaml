@@ -1,5 +1,9 @@
 ---
 - name: Install all Homebrew managed tools
   hosts: localhost
+  vars_prompt:
+    - name: install_big_components
+      prompt: "Install big components?"
+      default: "yes"
   roles:
     - install

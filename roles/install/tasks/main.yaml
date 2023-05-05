@@ -52,7 +52,6 @@
     - fzf
     - go
     - golangci-lint
-    - rust
     - k9s
     - kubebuilder
     - terraform
@@ -121,3 +120,4 @@
   with_items:
     - "sdkman: (https://sdkman.io/install)"
     - "cheatsheet: (https://www.mediaatelier.com/CheatSheet/)"
+    - "rust: (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)"

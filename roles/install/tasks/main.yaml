@@ -41,6 +41,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - jesseduffield/lazydocker/lazydocker
     - operator-sdk
     - jesseduffield/lazygit/lazygit
     - ripgrep
@@ -76,9 +77,9 @@
 - name: Run script-based installations
   ansible.builtin.shell: "{{ item }}"
   with_items:
-    - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash"
+    - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
     - "go install github.com/go-delve/delve/cmd/dlv@latest"
-    - "go install sigs.k8s.io/kind@v0.17.0"
+    - "go install sigs.k8s.io/kind@v0.20.0"
 
 - name: Remind about extra config for script-based installation
   debug:

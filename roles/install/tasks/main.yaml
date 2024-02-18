@@ -42,6 +42,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - ollama
     - jesseduffield/lazydocker/lazydocker
     - operator-sdk
     - jesseduffield/lazygit/lazygit

@@ -99,6 +99,7 @@
     id: "{{ item }}"
     state: latest
   with_items:
+    - 1452453066 # Hidden Bar
     - 425264550 # Disk Speed Test
     - 640199958 # Developer
     - 409183694 # Keynote

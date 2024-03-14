@@ -15,12 +15,13 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - zed
+    - arc
     - linearmouse
     - raspberry-pi-imager
     - warp
     - amethyst
     - vagrant
-    - sublime-text
     - studio-3t
 
 - name: Install Homebrew casks without quarentine
@@ -40,10 +41,11 @@
   when:
     - install_big_components == "yes"
 
+# To know the package id of an app, run `codesign -dr - [APP]`
 - name: Post Homebrew Cask install
   ansible.builtin.shell: "{{ item }}"
   with_items:
-    - "defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.sublimetext.4;}'"
+    - "defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=dev.zed.Zed;}'"
     - "defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false"
 
 - name: Install Homebrew tools
@@ -68,13 +70,11 @@
     - go
     - golangci-lint
     - k9s
-    - kubebuilder
     - terraform
     - packer
     - maven
     - btop
     - jq
-    - btop
     - jq
     - ncurses
     - mas
@@ -91,7 +91,7 @@
   with_items:
     - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
     - "go install github.com/go-delve/delve/cmd/dlv@latest"
-    - "go install sigs.k8s.io/kind@v0.20.0"
+    - "go install sigs.k8s.io/kind@v0.22.0"
 
 - name: Remind about extra config for script-based installation
   debug:

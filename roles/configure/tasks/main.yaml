@@ -25,3 +25,8 @@
 
 - name: Create a complied entry in ~/.terminfo based on the tmux-256color.info
   ansible.builtin.shell: "tic -xe tmux-256color ~/tmux-256color.info"
+
+- name: Generic macOS config
+  ansible.builtin.shell: "{{ item }}"
+  with_items:
+    - "defaults write com.apple.finder AppleShowAllFiles YES"

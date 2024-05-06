@@ -50,6 +50,7 @@
   with_items:
     - "defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=dev.zed.Zed;}'"
     - "defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false"
+    - "/opt/homebrew/anaconda3/bin/conda init zsh"
 
 - name: Install Homebrew tools
   community.general.homebrew:

@@ -2,7 +2,7 @@
 - name: Tap external Homebrew repository, state present
   community.general.homebrew_tap:
     name: "{{ item }}"
-  with_items:
+  loop:
     - civo/tools
     - derailed/k9s
     - vmware-tanzu/carvel
@@ -13,7 +13,7 @@
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
-  with_items:
+  loop:
     - anaconda
     - redisinsight
     - obsidian
@@ -32,14 +32,14 @@
     name: "{{ item }}"
     state: latest
     install_options: no-quarantine
-  with_items:
+  loop:
     - chromium
 
 - name: Install Big Homebrew casks
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
-  with_items:
+  loop:
     - pgadmin4
   when:
     - install_big_components == "yes"
@@ -47,7 +47,7 @@
 # To know the package id of an app, run `codesign -dr - [APP]`
 - name: Post Homebrew Cask install
   ansible.builtin.shell: "{{ item }}"
-  with_items:
+  loop:
     - "defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=dev.zed.Zed;}'"
     - "defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false"
     - "/opt/homebrew/anaconda3/bin/conda init zsh"
@@ -56,7 +56,7 @@
   community.general.homebrew:
     name: "{{ item }}"
     state: latest
-  with_items:
+  loop:
     - gh
     - stats
     - ollama
@@ -93,26 +93,26 @@
 
 - name: Run script-based installations
   ansible.builtin.shell: "{{ item }}"
-  with_items:
+  loop:
     - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
     - "go install github.com/go-delve/delve/cmd/dlv@latest"
     - "go install sigs.k8s.io/kind@v0.22.0"
 
 - name: Remind about extra config for script-based installation
-  debug:
+  ansible.builtin.debug:
     msg: "{{ item }}"
-  with_items:
+  loop:
     - "For NodeJS, run npx install <version>"
 
 - name: Remind about App Store login
-  debug:
+  ansible.builtin.debug:
     msg: "Now is the time to login in the App Store"
 
 - name: Install all App Store tools
   community.general.mas:
     id: "{{ item }}"
     state: latest
-  with_items:
+  loop:
     - 1452453066 # Hidden Bar
     - 425264550 # Disk Speed Test
     - 640199958 # Developer
@@ -136,9 +136,9 @@
     - 462054704 # Word
 
 - name: Remind about other tools
-  debug:
+  ansible.builtin.debug:
     msg: "Don't forget about... {{ item }}"
-  with_items:
+  loop:
     - "sdkman: (https://sdkman.io/install)"
     - "cheatsheet: (https://www.mediaatelier.com/CheatSheet/)"
     - "rust: (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)"

@@ -25,6 +25,7 @@
     - amethyst
     - vagrant
     - studio-3t
+    - cursor
 
 - name: Install Homebrew casks without quarentine
   community.general.homebrew_cask:

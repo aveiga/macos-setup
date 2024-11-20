@@ -1,0 +1,5 @@
+{
+  "makefile.extensionOutputFolder": "./.vscode",
+  "ansible.python.interpreterPath": "/opt/homebrew/bin/python3",
+  "makefile.configureOnOpen": false
+}

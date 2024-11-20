@@ -23,7 +23,7 @@
     - linearmouse
     - raspberry-pi-imager
     - warp
-    - amethyst
+    #- amethyst
     - vagrant
     - studio-3t
     - cursor
@@ -80,7 +80,6 @@
     - packer
     - maven
     - btop
-    - jq
     - jq
     - ncurses
     - mas

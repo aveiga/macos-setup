@@ -135,10 +135,17 @@
     - 1176895641 # Spark
     - 462054704 # Word
 
-- name: Remind about other tools
+- name: Remind about other DEVELOPMENT tools
   ansible.builtin.debug:
     msg: "Don't forget about... {{ item }}"
   loop:
     - "sdkman: (https://sdkman.io/install)"
     - "cheatsheet: (https://www.mediaatelier.com/CheatSheet/)"
     - "rust: (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)"
+
+- name: Remind about other MUSIC tools
+  ansible.builtin.debug:
+    msg: "Don't forget about... {{ item }}"
+  loop:
+    - "(AKAI)inMusic (https://profile.inmusicbrands.com/customer/account/productregistrations/)"
+    - "(Vaults)The Crow Hill Company (https://thecrowhillcompany.com)"

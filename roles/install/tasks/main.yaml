@@ -149,3 +149,9 @@
   loop:
     - "(AKAI)inMusic (https://profile.inmusicbrands.com/customer/account/productregistrations/)"
     - "(Vaults)The Crow Hill Company (https://thecrowhillcompany.com)"
+
+- name: Remind about other 3D Printing tools
+  ansible.builtin.debug:
+    msg: "Don't forget about... {{ item }}"
+  loop:
+    - "Bambu Studio (https://bambulab.com/en/download/studio)"

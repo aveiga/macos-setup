@@ -57,6 +57,7 @@
   community.general.homebrew:
     name: "{{ item }}"
     state: latest
+  ignore_errors: true
   loop:
     - gh
     - stats
@@ -108,11 +109,13 @@
   ansible.builtin.debug:
     msg: "Now is the time to login in the App Store"
 
+# Get Max App Store app identifier using `mas search <app-name>` or via web search `mac app store <app-name>`
 - name: Install all App Store tools
   community.general.mas:
     id: "{{ item }}"
     state: latest
   loop:
+    - 441258766 # Magnet
     - 1452453066 # Hidden Bar
     - 425264550 # Disk Speed Test
     - 640199958 # Developer

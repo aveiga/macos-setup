@@ -14,6 +14,8 @@
     name: "{{ item }}"
     state: latest
   loop:
+    - bricklink-studio
+    - blender
     - chatgpt
     - anaconda
     - redisinsight

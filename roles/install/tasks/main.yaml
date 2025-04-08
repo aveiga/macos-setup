@@ -14,6 +14,8 @@
     name: "{{ item }}"
     state: latest
   loop:
+    - lm-studio
+    - dbeaver-community
     - chromium
     - microsoft-teams
     - bruno
@@ -54,7 +56,10 @@
 - name: Post Homebrew Cask install
   ansible.builtin.shell: "{{ item }}"
   loop:
-    - "defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=dev.zed.Zed;}'"
+    - >
+      defaults write com.apple.LaunchServices/com.apple.launchservices.secure
+      LSHandlers -array-add
+      '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=dev.zed.Zed;}'
     - "defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false"
     - "/opt/homebrew/anaconda3/bin/conda init zsh"
 
@@ -66,7 +71,6 @@
   loop:
     - gh
     - stats
-    - ollama
     - jesseduffield/lazydocker/lazydocker
     - operator-sdk
     - jesseduffield/lazygit/lazygit

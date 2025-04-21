@@ -161,6 +161,7 @@
   loop:
     - "(AKAI)inMusic (https://profile.inmusicbrands.com/customer/account/productregistrations/)"
     - "(Vaults)The Crow Hill Company (https://thecrowhillcompany.com)"
+    - "IK Multimedia Product Manager (https://www.ikmultimedia.com/products/productmanager/)"
 
 - name: Remind about other 3D Printing tools
   ansible.builtin.debug:

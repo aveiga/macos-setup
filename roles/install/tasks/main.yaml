@@ -14,9 +14,9 @@
     name: "{{ item }}"
     state: latest
   loop:
+    - arc
     - lm-studio
     - dbeaver-community
-    - chromium
     - microsoft-teams
     - bruno
     - raycast
@@ -124,6 +124,7 @@
     id: "{{ item }}"
     state: latest
   loop:
+    - 1579902068 # xSearch
     - 441258766 # Magnet
     - 1452453066 # Hidden Bar
     - 425264550 # Disk Speed Test

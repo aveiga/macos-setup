@@ -32,7 +32,7 @@
     - warp
     #- amethyst
     - vagrant
-    - studio-3t
+    #- studio-3t
     - cursor
 
 - name: Install Homebrew casks without quarentine

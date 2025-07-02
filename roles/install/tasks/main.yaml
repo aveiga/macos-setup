@@ -69,6 +69,8 @@
     state: latest
   ignore_errors: true
   loop:
+    - yt-dlp
+    - ffmpeg
     - gh
     - stats
     - jesseduffield/lazydocker/lazydocker

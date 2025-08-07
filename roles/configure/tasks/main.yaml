@@ -4,16 +4,24 @@
     path: "~/.config"
     state: directory
 
-- name: Ensure .config/nvim directory exists
+- name: Ensure .config/<<tool>> directories exist
   ansible.builtin.file:
-    path: "~/.config/nvim"
+    path: "~/.config/{{ item }}"
     state: directory
+  loop:
+    - nvim
+    - ghostty
 
-- name: Git clone Astrovim
-  ansible.builtin.git:
-    repo: "https://github.com/AstroNvim/template"
-    dest: "~/.config/nvim"
-    depth: 1
+- name: Create Ghostty config
+  ansible.builtin.copy:
+    src: "../files/ghostty.config"
+    dest: "~/.config/ghostty/config"
+
+#- name: Git clone Astrovim
+#  ansible.builtin.git:
+#    repo: "https://github.com/AstroNvim/template"
+#    dest: "~/.config/nvim"
+#    depth: 1
 
 - name: Setup tmux.conf
   ansible.builtin.copy:

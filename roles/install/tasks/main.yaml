@@ -14,15 +14,17 @@
     name: "{{ item }}"
     state: latest
   loop:
+    - balenaetcher
+    - ghostty
     - arc
     - lm-studio
     - dbeaver-community
     - microsoft-teams
     - bruno
-    - raycast
+    #- raycast
     - blender
     - chatgpt
-    - anaconda
+    #- anaconda
     - redisinsight
     - obsidian
     - zed
@@ -30,7 +32,7 @@
     - linearmouse
     - raspberry-pi-imager
     - warp
-    #- amethyst
+    - amethyst
     - vagrant
     #- studio-3t
     - cursor
@@ -126,8 +128,8 @@
     id: "{{ item }}"
     state: latest
   loop:
-    - 1579902068 # xSearch
-    - 441258766 # Magnet
+    #- 1579902068 # xSearch
+    #- 441258766 # Magnet
     - 1452453066 # Hidden Bar
     - 425264550 # Disk Speed Test
     - 640199958 # Developer

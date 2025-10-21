@@ -14,14 +14,13 @@
     name: "{{ item }}"
     state: latest
   loop:
+    - cursor-cli
     - balenaetcher
     - ghostty
-    - arc
     - lm-studio
     - dbeaver-community
     - microsoft-teams
     - bruno
-    #- raycast
     - blender
     - chatgpt
     #- anaconda

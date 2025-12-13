@@ -10,6 +10,7 @@
     - anchore/syft
 
 - name: Install Homebrew casks
+  ignore_errors: true
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
@@ -72,6 +73,7 @@
     state: latest
   ignore_errors: true
   loop:
+    - mistral-vibe
     - yt-dlp
     - ffmpeg
     - gh

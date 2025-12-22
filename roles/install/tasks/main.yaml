@@ -73,7 +73,6 @@
     state: latest
   ignore_errors: true
   loop:
-    - r
     - mistral-vibe
     - yt-dlp
     - ffmpeg
@@ -109,7 +108,7 @@
     - bash
     - kbld
 
-- name: Run script-based installations
+- name: Run script-based installations # noqa: command-instead-of-shell,no-changed-when
   ansible.builtin.shell: "{{ item }}"
   loop:
     - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
@@ -132,8 +131,8 @@
     id: "{{ item }}"
     state: latest
   loop:
-    #- 1579902068 # xSearch
-    #- 441258766 # Magnet
+    # - 1579902068 # xSearch
+    # - 441258766 # Magnet
     - 1452453066 # Hidden Bar
     - 425264550 # Disk Speed Test
     - 640199958 # Developer

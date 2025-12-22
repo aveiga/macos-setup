@@ -73,6 +73,7 @@
     state: latest
   ignore_errors: true
   loop:
+    - r
     - mistral-vibe
     - yt-dlp
     - ffmpeg

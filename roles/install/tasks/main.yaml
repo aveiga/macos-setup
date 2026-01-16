@@ -15,6 +15,7 @@
     name: "{{ item }}"
     state: latest
   loop:
+    - claude
     - musescore
     - prismlauncher
     - cursor-cli

@@ -29,27 +29,23 @@
     - microsoft-teams
     - bruno
     - blender
-    - chatgpt
     #- anaconda
     - redisinsight
     - obsidian
     - zed
-    - arc
     - linearmouse
     - raspberry-pi-imager
-    - warp
     - amethyst
-    - vagrant
     #- studio-3t
     - cursor
 
-- name: Install Homebrew casks without quarentine
-  community.general.homebrew_cask:
-    name: "{{ item }}"
-    state: latest
-    install_options: no-quarantine
-  loop:
-    - chromium
+#- name: Install Homebrew casks without quarentine
+#  community.general.homebrew_cask:
+#    name: "{{ item }}"
+#    state: latest
+#    install_options: no-quarantine
+#  loop:
+#    - chromium
 
 - name: Install Big Homebrew casks
   community.general.homebrew_cask:
@@ -77,28 +73,22 @@
     state: latest
   ignore_errors: true
   loop:
-    - mistral-vibe
     - yt-dlp
     - ffmpeg
     - gh
-    - stats
     - jesseduffield/lazydocker/lazydocker
-    - operator-sdk
     - jesseduffield/lazygit/lazygit
     - ripgrep
     - slides
     - gum
     - vhs
     - neovim
-    - syft
-    - grype
     - tmux
     - fzf
     - go
     - golangci-lint
     - k9s
     - opentofu
-    - packer
     - maven
     - btop
     - jq
@@ -106,18 +96,12 @@
     - mas
     - k6
     - civo
-    - yarn
-    - aquasecurity/trivy/trivy
-    - cloudfoundry/tap/cf-cli@8
     - bash
-    - kbld
 
 - name: Run script-based installations # noqa: command-instead-of-shell,no-changed-when
   ansible.builtin.shell: "{{ item }}"
   loop:
-    - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
-    - "go install github.com/go-delve/delve/cmd/dlv@latest"
-    - "go install sigs.k8s.io/kind@v0.22.0"
+    - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash"
 
 - name: Remind about extra config for script-based installation
   ansible.builtin.debug:
@@ -131,9 +115,11 @@
 
 # Get Max App Store app identifier using `mas search <app-name>` or via web search `mac app store <app-name>`
 - name: Install all App Store tools
-  community.general.mas:
-    id: "{{ item }}"
-    state: latest
+  tags: "mas"
+  ansible.builtin.shell: "mas install {{ item }}"
+  # community.general.mas:
+  #   id: "{{ item }}"
+  #   state: latest
   loop:
     # - 1579902068 # xSearch
     # - 441258766 # Magnet
@@ -152,9 +138,8 @@
     - 937984704 # Amphetamine
     - 409203825 # Numbers
     - 497799835 # Xcode
-    - 1147396723 # WhatsApp
+    - 310633997 # WhatsApp Messenger
     - 409201541 # Pages
-    - 824183456 # Affinity Photo
     - 1475387142 # Tailscale
     - 1295203466 # Microsoft Remote Desktop
     - 1176895641 # Spark

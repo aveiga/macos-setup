@@ -1,5 +1,5 @@
 install:
-	ansible-playbook install.yaml
+	ansible-playbook install.yaml $(FLAGS)
 
 configure:
-	ansible-playbook configure.yaml
+	ansible-playbook configure.yaml $(FLAGS)

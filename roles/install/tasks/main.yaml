@@ -153,6 +153,7 @@
     - "sdkman: (https://sdkman.io/install)"
     - "cheatsheet: (https://www.mediaatelier.com/CheatSheet/)"
     - "rust: (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)"
+    - "Moom: https://manytricks.com/moom/ - License stored somewhere else"
 
 - name: Remind about other MUSIC tools
   ansible.builtin.debug:

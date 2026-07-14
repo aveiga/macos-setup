@@ -15,6 +15,7 @@
     name: "{{ item }}"
     state: latest
   loop:
+    - zap
     - cmux
     - figma
     - utm
@@ -74,6 +75,7 @@
     state: latest
   ignore_errors: true
   loop:
+    - mistral-vibe
     - yt-dlp
     - ffmpeg
     - gh

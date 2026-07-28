@@ -1,42 +1,40 @@
 ---
 - name: Tap external Homebrew repository, state present
   community.general.homebrew_tap:
-    name: "{{ item }}"
-  loop:
-    - civo/tools
-    - derailed/k9s
+    name:
+      - civo/tools
+      - derailed/k9s
 
 - name: Install Homebrew casks
   ignore_errors: true
   community.general.homebrew_cask:
-    name: "{{ item }}"
+    name:
+      - zap
+      - cmux
+      - figma
+      - utm
+      - claude
+      - claude-code
+      - musescore
+      - prismlauncher
+      - cursor-cli
+      - balenaetcher
+      - ghostty
+      - lm-studio
+      - dbeaver-community
+      - microsoft-teams
+      - bruno
+      - blender
+      #- anaconda
+      - redisinsight
+      - obsidian
+      - zed
+      - linearmouse
+      - raspberry-pi-imager
+      - amethyst
+      #- studio-3t
+      - cursor
     state: latest
-  loop:
-    - zap
-    - cmux
-    - figma
-    - utm
-    - claude
-    - claude-code
-    - musescore
-    - prismlauncher
-    - cursor-cli
-    - balenaetcher
-    - ghostty
-    - lm-studio
-    - dbeaver-community
-    - microsoft-teams
-    - bruno
-    - blender
-    #- anaconda
-    - redisinsight
-    - obsidian
-    - zed
-    - linearmouse
-    - raspberry-pi-imager
-    - amethyst
-    #- studio-3t
-    - cursor
 
 #- name: Install Homebrew casks without quarentine
 #  community.general.homebrew_cask:
@@ -48,10 +46,9 @@
 
 - name: Install Big Homebrew casks
   community.general.homebrew_cask:
-    name: "{{ item }}"
+    name:
+      - pgadmin4
     state: latest
-  loop:
-    - pgadmin4
   when:
     - install_big_components == "yes"
 
@@ -68,34 +65,33 @@
 
 - name: Install Homebrew tools
   community.general.homebrew:
-    name: "{{ item }}"
+    name:
+      - playwright-cli
+      - yt-dlp
+      - ffmpeg
+      - gh
+      - jesseduffield/lazydocker/lazydocker
+      - jesseduffield/lazygit/lazygit
+      - ripgrep
+      - slides
+      - gum
+      - vhs
+      - neovim
+      - tmux
+      - fzf
+      - go
+      - golangci-lint
+      - k9s
+      - maven
+      - btop
+      - jq
+      - ncurses
+      - mas
+      - k6
+      - civo
+      - bash
     state: latest
   ignore_errors: true
-  loop:
-    - playwright-cli
-    - yt-dlp
-    - ffmpeg
-    - gh
-    - jesseduffield/lazydocker/lazydocker
-    - jesseduffield/lazygit/lazygit
-    - ripgrep
-    - slides
-    - gum
-    - vhs
-    - neovim
-    - tmux
-    - fzf
-    - go
-    - golangci-lint
-    - k9s
-    - maven
-    - btop
-    - jq
-    - ncurses
-    - mas
-    - k6
-    - civo
-    - bash
 
 - name: Run script-based installations # noqa: command-instead-of-shell,no-changed-when
   ansible.builtin.shell: "{{ item }}"
@@ -113,12 +109,18 @@
     msg: "Now is the time to login in the App Store"
 
 # Get Max App Store app identifier using `mas search <app-name>` or via web search `mac app store <app-name>`
+# NOTE: the community.general.mas module is incompatible with mas >= 6.x (it fails to
+# parse the right-aligned, space-padded app IDs in `mas list`), so we drive mas directly.
+- name: Get installed App Store app IDs
+  tags: "mas"
+  ansible.builtin.shell: "mas list | awk '{print $1}'"
+  register: mas_installed
+  changed_when: false
+
 - name: Install all App Store tools
   tags: "mas"
-  ansible.builtin.shell: "mas install {{ item }}"
-  # community.general.mas:
-  #   id: "{{ item }}"
-  #   state: latest
+  ansible.builtin.command: "mas install {{ item }}"
+  when: (item | string) not in mas_installed.stdout_lines
   loop:
     # - 1579902068 # xSearch
     # - 441258766 # Magnet

@@ -75,6 +75,7 @@
     state: latest
   ignore_errors: true
   loop:
+    - playwright-cli
     - mistral-vibe
     - yt-dlp
     - ffmpeg

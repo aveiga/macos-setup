@@ -5,9 +5,6 @@
   loop:
     - civo/tools
     - derailed/k9s
-    - vmware-tanzu/carvel
-    - anchore/grype
-    - anchore/syft
 
 - name: Install Homebrew casks
   ignore_errors: true
@@ -76,7 +73,6 @@
   ignore_errors: true
   loop:
     - playwright-cli
-    - mistral-vibe
     - yt-dlp
     - ffmpeg
     - gh
@@ -92,7 +88,6 @@
     - go
     - golangci-lint
     - k9s
-    - opentofu
     - maven
     - btop
     - jq

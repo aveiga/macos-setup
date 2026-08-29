@@ -155,6 +155,7 @@
     - "rust: (curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)"
     - "Moom: https://manytricks.com/moom/ - License stored somewhere else"
     - "Walkie: https://walkie.b150.ai/en"
+    - "LunarVim: https://www.lunarvim.org/docs/installation - (LV_BRANCH='release-1.4/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh))"
 
 - name: Remind about other MUSIC tools
   ansible.builtin.debug:
